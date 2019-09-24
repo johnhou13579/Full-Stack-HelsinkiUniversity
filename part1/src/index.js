@@ -33,9 +33,20 @@ const Header=(props)=>{
 const Content=(props)=>{
   return(
     <div>
-      <p>{props.part1}</p>
-      <p>{props.part2}</p>
-      <p>{props.part3}</p>
+      <Part part={props.part1}/>
+      <Part part={props.part2}/>
+      <Part part={props.part3}/>
+    </div>
+  )
+}
+
+//Part component for Content component
+const Part=(props)=>{
+  return(
+    <div>
+      <p>
+        {props.part}
+      </p>
     </div>
   )
 }
