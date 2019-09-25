@@ -8,6 +8,8 @@ const App = () => {
     const [bad, setBad] = useState(0)
     
     const Statistics = ({good, neutral, bad}) => {
+        if(good + neutral + bad > 0)
+        {
         return(
             <div>
                 <Display text="good" value={good}/>
@@ -19,6 +21,8 @@ const App = () => {
                 <Positive good={good} neutral={neutral} bad={bad}/>
             </div>
         )
+        }
+        return(<div></div>)
       }
     
     
@@ -30,6 +34,7 @@ const App = () => {
             <Rating handleClick={() => setBad(bad + 1)} rate="bad" />
             
             <Titles text="statistics" />
+            
             <Statistics good={good} neutral={neutral} bad={bad}/>
 
         </div>
