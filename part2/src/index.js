@@ -12,13 +12,15 @@ const App = () => {
         {
         return(
             <div>
-                <Display text="good" value={good}/>
-                <Display text="neutral" value={neutral}/>
-                <Display text="bad" value={bad}/>
-
+            <table><tbody>
+                <Statistic  text="good" value={good}/>
+                <Statistic  text="neutral" value={neutral}/>
+                <Statistic  text="bad" value={bad}/>
+            
                 <All good={good} neutral={neutral} bad={bad}/>
                 <Average good={good} neutral={neutral} bad={bad}/>
                 <Positive good={good} neutral={neutral} bad={bad}/>
+            </tbody></table>
             </div>
         )
         }
@@ -59,36 +61,40 @@ const Rating = (props) => {
     )
 }
 
-const Display=(props)=>{
-    return(
-        <div>
-            {props.text} {props.value}
-        </div>
+const Statistic =(props)=>{
+    return(     
+            <tr>
+                    <td>{props.text}</td>
+                    <td>{props.value}</td>
+            </tr>   
     )
 }
 
 
 const All=({good, neutral, bad})=>{
     return(
-        <div>
-            all {good+neutral+bad} 
-        </div>
+        <tr>
+            <td>all </td>
+            <td>{good+neutral+bad} </td>
+        </tr>
     )
 }
 
 const Average=({good, neutral, bad})=>{
     return(
-        <div>
-            average {(good*1 + bad*(-1)) / (good+neutral+bad)} 
-        </div>
+        <tr>
+            <td>average </td>
+            <td>{((good*1 + bad*(-1)) / (good+neutral+bad)).toFixed(1)}</td> 
+        </tr>
     )
 }
 
 const Positive=({good, neutral, bad})=>{
     return(
-        <div>
-           positive {good/(good+neutral+bad)*100}%
-        </div>
+        <tr>
+           <td>positive </td>
+           <td> {(good/(good+neutral+bad)*100).toFixed(1)}%</td>
+        </tr>
     )
 }
 
