@@ -6,22 +6,32 @@ const App = () => {
     const [good, setGood] = useState(0)
     const [neutral, setNeutral] = useState(0)
     const [bad, setBad] = useState(0)
+    
+    const Statistics = ({good, neutral, bad}) => {
+        return(
+            <div>
+                <Display text="good" value={good}/>
+                <Display text="neutral" value={neutral}/>
+                <Display text="bad" value={bad}/>
 
+                <All good={good} neutral={neutral} bad={bad}/>
+                <Average good={good} neutral={neutral} bad={bad}/>
+                <Positive good={good} neutral={neutral} bad={bad}/>
+            </div>
+        )
+      }
+    
+    
     return (
         <div>
             <Titles text="give feedback" />
             <Rating handleClick={() => setGood(good + 1)} rate="good" />
             <Rating handleClick={() => setNeutral(neutral + 1)} rate="neutral" />
             <Rating handleClick={() => setBad(bad + 1)} rate="bad" />
-            <Titles text="statistics" />
-            <Display text="good" value={good}/>
-            <Display text="neutral" value={neutral}/>
-            <Display text="bad" value={bad}/>
-
-            <All good={good} neutral={neutral} bad={bad}/>
-            <Average good={good} neutral={neutral} bad={bad}/>
-            <Positive good={good} neutral={neutral} bad={bad}/>
             
+            <Titles text="statistics" />
+            <Statistics good={good} neutral={neutral} bad={bad}/>
+
         </div>
     )
 }
