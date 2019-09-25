@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+//https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps
 
 const App = () => {
   const course = {
@@ -42,7 +43,7 @@ const Header=(props)=>{
 
 //renders the parts and their number of exercises
 const Content=(props)=>{
-  console.log("Content " + props)
+  console.log("Content " , props)
   return(
     <div>
       <Part part={props.course.parts[0]}/>
@@ -54,7 +55,7 @@ const Content=(props)=>{
 
 //Part component for Content component
 const Part=(props)=>{
-  console.log("Part "+ props)
+  console.log("Part ", props)
   return(
     <div>
       <p>
@@ -66,7 +67,7 @@ const Part=(props)=>{
 
 //renders the total amount of exercises
 const Total=(props)=>{
-  console.log("Total "+ props)
+  console.log("Total ", props)
   return(
     <div>
       <p>Number of exercises {props.course.parts[0].exercises+props.course.parts[1].exercises+props.course.parts[2].exercises}</p>
