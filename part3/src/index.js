@@ -4,49 +4,54 @@ import ReactDOM from 'react-dom'
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
+  const [votes, setVote] = useState(Array(6).fill(0))
 
-  const copy = Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0);
-
-  
   let random = Math.floor(Math.random() * props.anecdotes.length)
   
-  console.log(random)
-  console.log("random" , copy[random])
-  console.log(copy)
-  
+  const giveVote = (selected) => {
+    const copy = [...votes]
+    copy[selected] += 1
+    setVote(copy)
+ }
+
   return (
     <div>
-      {props.anecdotes[selected]}
-      <Display copy = {copy[random]}/>
-      <Vote handleClick2={()=>copy[random]+=1}/> 
+      <Label selected={selected} votes={votes}/>
+      <Display selected={selected} votes={votes}/>
+      <Button1 handleClick={() => giveVote(selected)}/>
       <Button handleClick={()=>setSelected(random)}/>
     </div>
   )
+  
 }
 
-const Display=(props)=>{
+const Display=({selected,votes})=>{
     return(
         <div>
-            has {props.copy} votes
+            Has {votes[selected]} votes
         </div>
+    )
+}
+
+const Label = ({selected,votes}) => {
+    return(
+    <div>{anecdotes[selected]}</div>
+    
     )
 }
 
 const Button=(props)=>{
     return(
         <div> 
-            <button onClick={props.handleClick2}>next anectode</button>
+            <button onClick={props.handleClick}>next anectode</button>
         </div>
     )
 }
 
-const Vote=(props)=>{
-    return(
-        <div>
-            <button onClick={props.handleClick}>vote</button>
-        </div>
-    )
-}
+const Button1 = (props) => (
+  <button onClick={props.handleClick}>vote</button>
+)
+
 
 const anecdotes = [
   'If it hurts, do it more often',
