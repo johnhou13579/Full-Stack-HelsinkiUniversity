@@ -20,9 +20,32 @@ const App = (props) => {
       <Display selected={selected} votes={votes}/>
       <Button1 handleClick={() => giveVote(selected)}/>
       <Button handleClick={()=>setSelected(random)}/>
+
+      <Most selected={selected} votes={votes}/>
     </div>
   )
   
+}
+
+const Most=({selected,votes})=>{
+  let temp=0
+  let i=0
+  let max = "Each Anecdote"
+  for(i=0; i<votes.length;i++){
+    if(votes[i] >= temp){
+      temp=votes[i]
+    }
+  }
+  if(temp!==0)
+  {
+    max = anecdotes[temp]
+  }
+
+  return(
+    <div>
+      {max} has {temp} votes.
+    </div>
+  )
 }
 
 const Display=({selected,votes})=>{
