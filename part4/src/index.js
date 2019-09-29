@@ -22,6 +22,27 @@ const course = [{
         id: 3
       }
     ]
+  },
+  {
+    name: 'Half Stack application development 2',
+    id: 2,
+    parts: [
+      {
+        name: 'Fundamentals of React 2',
+        exercises: 102,
+        id: 1
+      },
+      {
+        name: 'Using props to pass data 2',
+        exercises: 72,
+        id: 2
+      },
+      {
+        name: 'State of a component 2',
+        exercises: 142,
+        id: 3
+      }
+    ]
   }]
 
 ReactDOM.render(
