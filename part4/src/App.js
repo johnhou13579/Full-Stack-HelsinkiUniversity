@@ -10,20 +10,40 @@ const App = ({course}) => {
     )
   }
 
-const Course=(props)=> {
+const Course=(props)=>{
   return(
     <div>
-      <Header course = {props}/>
+      {props.map(p=><div key={p.id}>
+          <EachCourse prop={p}/>
+        </div>)}
+    </div>
+  )
+}
+
+const EachCourse=(props)=> {
+  return(
+    <div>
+       <Header course={props.prop}/>
+       <Content course={props.prop.parts}/>
     </div>
   )
 }
 
 const Header=(props)=>{
   return(
-    <div>
-      {props.course.map(p=><h1 key={p.id}>{p.name}</h1>)}
-    </div>
+    <h1>
+      {props.course.name}
+    </h1>
   )
 }
+
+const Content=(props)=>{
+  return(
+    <div>
+      {props.course.map(p=><div key={p.id}>{p.name} : {p.exercises}</div>)}
+    </div>
+  )
+} 
+
 
 export default App
