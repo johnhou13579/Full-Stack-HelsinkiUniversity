@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-const courses = [{
+const course = [{
     name: 'Half Stack application development',
+    id: 1,
     parts: [
       {
         name: 'Fundamentals of React',
@@ -24,6 +25,6 @@ const courses = [{
   }]
 
 ReactDOM.render(
-  <App course={courses} />,
+  <App course={course} />,
   document.getElementById('root')
 )
