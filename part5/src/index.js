@@ -10,19 +10,35 @@ const App = () => {
   const handleNameChange=(event)=>{
     console.log(event.target.value)
     setNewName(event.target.value)
-
     
 }
 
+const notification=(props)=>{
+    return(
+        <div>
+            alert()
+        </div>
+    )
+}
 
 
 const addNote=(event)=>{
     event.preventDefault()
-    const personObject={
-        name: newName
+    console.log(persons.map(p=>p.name).includes(newName))
+    console.log(persons.map(p=>p.name))
+    if(!(persons.map(p=>p.name).includes(newName)))
+    {
+        const personObject={
+            name: newName
+        }
+        setPersons(persons.concat(personObject))
     }
-    setPersons(persons.concat(personObject))
+    else{
+        alert(`${newName} is already added to phonebook`)
+    }
+
     setNewName('')
+
 }
 
   return (
@@ -32,7 +48,7 @@ const addNote=(event)=>{
       <form onSubmit={addNote}>
           <div>
           name: <input value={newName} onChange={handleNameChange}/>
-          <button type="submit">add</button> </div>
+          <button type="submit" onClick={notification}>add</button> </div>
       </form>
       <h2>Numbers</h2>
       {persons.map(p=><li key={p.name}>{p.name}</li>)}
