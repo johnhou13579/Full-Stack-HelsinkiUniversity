@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 const App = () => {
   const [ persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
+    { name: 'First Arto Hellas' }
   ]) 
   const [newName, setNewName] = useState('')
 
@@ -14,7 +14,11 @@ const App = () => {
 
 const addNote=(event)=>{
     event.preventDefault()
-    console.log('button clicked', event.target)
+    const personObject={
+        name: newName
+    }
+    setPersons(persons.concat(personObject))
+    setNewName('')
 }
 
   return (
@@ -29,7 +33,7 @@ const addNote=(event)=>{
           <button type="submit">add</button> </div>
       </form>
       <h2>Numbers</h2>
-
+      {persons.map(p=><li key={p.name}>{p.name}</li>)}
     </div>
   )
 }
