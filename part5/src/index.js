@@ -10,7 +10,11 @@ const App = () => {
   const handleNameChange=(event)=>{
     console.log(event.target.value)
     setNewName(event.target.value)
+
+    
 }
+
+
 
 const addNote=(event)=>{
     event.preventDefault()
@@ -24,8 +28,6 @@ const addNote=(event)=>{
   return (
       
     <div>
-        <div>debug: {newName}</div>
-
       <h2>Phonebook</h2>
       <form onSubmit={addNote}>
           <div>
