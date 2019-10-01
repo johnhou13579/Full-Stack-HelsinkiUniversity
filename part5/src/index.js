@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Filter from './components/filter'
 import Form from './components/form'
+import Search from './components/search'
 
 const App = () => {
     const [persons, setPersons] = useState([
@@ -10,30 +11,21 @@ const App = () => {
             number: '909-123-1234'
         }
     ])
-
     const [newName, setNewName] = useState('')
-
     const [newNum, setNewNum] = useState('')
-
     const [newSearch, setNewSearch] = useState('')
-
     const handleNameChange = (event) => {
         console.log(event.target.value)
         setNewName(event.target.value)
-
     }
-
     const handleNumChange = (event) => {
         console.log(event.target.value)
         setNewNum(event.target.value)
     }
-
     const handleSearch = (event) => {
         console.log(event.target.value)
         setNewSearch(event.target.value)
     }
-
-
     const addNote = (event) => {
         event.preventDefault()
         if (!(persons.map(p => p.name).includes(newName))) {
@@ -46,30 +38,29 @@ const App = () => {
         else {
             alert(`${newName} is already added to phonebook`)
         }
-
         setNewName('')
         setNewSearch('')
-
     }
 
-
-    
 
     return (
 
         <div>
             <h2>Phonebook</h2>
-            <div>
-                filter shown with <input value={newSearch} onChange={handleSearch} />
-            </div>
-            <h2>Add a New</h2>
-            <Form setNewName={setNewName} setNewNum={setNewNum} addNote={addNote} newName={newName} newNum={newNum} handleNameChange={handleNameChange} handleNumChange={handleNumChange}/>
+
+            <Search newSearch={newSearch} handleSearch={handleSearch} />
+
+            <h3>Add a New</h3>
+
+            <Form setNewName={setNewName} setNewNum={setNewNum} addNote={addNote} newName={newName} newNum={newNum} handleNameChange={handleNameChange} handleNumChange={handleNumChange} />
+            
             <h2>Numbers</h2>
-            {<Filter persons={persons} newSearch={newSearch}/>}
+
+            
+            <Filter persons={persons} newSearch={newSearch} />
         </div>
     )
 }
-
 
 
 ReactDOM.render(
