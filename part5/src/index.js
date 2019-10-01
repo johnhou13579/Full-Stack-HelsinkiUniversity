@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 
 const App = () => {
     const [persons, setPersons] = useState([
-        { name: 'First Arto Hellas' }
+        { name: 'First Arto Hellas',
+          number : '909-123-1234'
+    }
     ])
     const [newName, setNewName] = useState('')
 
@@ -33,7 +35,8 @@ const App = () => {
         event.preventDefault()
         if (!(persons.map(p => p.name).includes(newName))) {
             const personObject = {
-                name: newName
+                name: newName,
+                number: newNum
             }
             setPersons(persons.concat(personObject))
         }
@@ -56,7 +59,7 @@ const App = () => {
                     <button type="submit" onClick={notification}>add</button> </div>
             </form>
             <h2>Numbers</h2>
-            {persons.map(p => <li key={p.name}>{p.name}</li>)}
+            {persons.map(p => <li key={p.name}>{p.name} {p.number}</li>)}
         </div>
     )
 }
