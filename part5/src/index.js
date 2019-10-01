@@ -54,7 +54,7 @@ const App = () => {
             console.log("Yes")
             return (
                 <div>
-                    {persons.map(p => newSearch === p.name ? <li key={p.name}>{p.name} {p.number}</li> : <div key={p.name}></div>)}
+                    {persons.map(p => newSearch.toLowerCase() === p.name.toLowerCase() ? <li key={p.name}>{p.name} {p.number}</li> : <div key={p.name}></div>)}
                 </div>
             )
         } else {
