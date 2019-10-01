@@ -7,10 +7,17 @@ const App = () => {
     ])
     const [newName, setNewName] = useState('')
 
+    const[newNum, setNewNum] = useState('')
+
     const handleNameChange = (event) => {
         console.log(event.target.value)
         setNewName(event.target.value)
 
+    }
+
+    const handleNumChange = (event) =>{
+        console.log(event.target.value)
+        setNewNum(event.target.value)
     }
 
     const notification = (props) => {
@@ -44,7 +51,8 @@ const App = () => {
             <h2>Phonebook</h2>
             <form onSubmit={addNote}>
                 <div>
-                    name: <input value={newName} onChange={handleNameChange} />
+                    <div>name: <input value={newName} onChange={handleNameChange} /></div>
+                    <div>number: <input value={newNum} onChange={handleNumChange}/></div>
                     <button type="submit" onClick={notification}>add</button> </div>
             </form>
             <h2>Numbers</h2>
