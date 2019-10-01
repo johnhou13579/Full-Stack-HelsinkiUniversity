@@ -29,14 +29,6 @@ const App = () => {
         setNewSearch(event.target.value)
     }
 
-    const notification = (props) => {
-        return (
-            <div>
-                alert()
-        </div>
-        )
-    }
-
 
     const addNote = (event) => {
         event.preventDefault()
@@ -67,7 +59,7 @@ const App = () => {
                 <div>
                     <div>name: <input value={newName} onChange={handleNameChange} /></div>
                     <div>number: <input value={newNum} onChange={handleNumChange}/></div>
-                    <button type="submit" onClick={notification}>add</button> </div>
+                    <button type="submit" >add</button> </div>
             </form>
             <h2>Numbers</h2>
             {persons.map(p => <li key={p.name}>{p.name} {p.number}</li>)}
