@@ -11,6 +11,8 @@ const App = () => {
 
     const[newNum, setNewNum] = useState('')
 
+    const[newSearch, setNewSearch] = useState('')
+
     const handleNameChange = (event) => {
         console.log(event.target.value)
         setNewName(event.target.value)
@@ -20,6 +22,11 @@ const App = () => {
     const handleNumChange = (event) =>{
         console.log(event.target.value)
         setNewNum(event.target.value)
+    }
+
+    const handleSearch=(event)=>{
+        console.log(event.target.value)
+        setNewSearch(event.target.value)
     }
 
     const notification = (props) => {
@@ -52,6 +59,10 @@ const App = () => {
 
         <div>
             <h2>Phonebook</h2>
+            <div>
+                filter shown with <input value={newSearch} onChange={handleSearch}/>
+            </div>
+            <h2>Add a New</h2>
             <form onSubmit={addNote}>
                 <div>
                     <div>name: <input value={newName} onChange={handleNameChange} /></div>
