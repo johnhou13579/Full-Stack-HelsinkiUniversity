@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import Filter from './components/filter'
+import Form from './components/form'
 
 const App = () => {
     const [persons, setPersons] = useState([
@@ -8,6 +10,7 @@ const App = () => {
             number: '909-123-1234'
         }
     ])
+
     const [newName, setNewName] = useState('')
 
     const [newNum, setNewNum] = useState('')
@@ -49,22 +52,8 @@ const App = () => {
 
     }
 
-    const Filter = () => {
-        if (newSearch !== "") {
-            console.log("Yes")
-            return (
-                <div>
-                    {persons.map(p => newSearch.toLowerCase() === p.name.toLowerCase() ? <li key={p.name}>{p.name} {p.number}</li> : <div key={p.name}></div>)}
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    {persons.map(p => <li key={p.name}>{p.name} {p.number}</li>)}
-                </div>
-            )
-        }
-    }
+
+    
 
     return (
 
@@ -74,14 +63,9 @@ const App = () => {
                 filter shown with <input value={newSearch} onChange={handleSearch} />
             </div>
             <h2>Add a New</h2>
-            <form onSubmit={addNote}>
-                <div>
-                    <div>name: <input value={newName} onChange={handleNameChange} /></div>
-                    <div>number: <input value={newNum} onChange={handleNumChange} /></div>
-                    <button type="submit" >add</button> </div>
-            </form>
+            <Form setNewName={setNewName} setNewNum={setNewNum} addNote={addNote} newName={newName} newNum={newNum} handleNameChange={handleNameChange} handleNumChange={handleNumChange}/>
             <h2>Numbers</h2>
-            {<Filter />}
+            {<Filter persons={persons} newSearch={newSearch}/>}
         </div>
     )
 }
