@@ -1,13 +1,22 @@
-import React from 'react';
+import React from 'react'
 import axios from 'axios'
+import Note from './components/Note'
 
-function App() {
-  return (
-    
-    <div className="App">
+const App = () => {
+  const [notes, setNotes] = useState([])
+  const [newNote, setNewNote] = useState('')
+  const [showAll, setShowAll] = useState(true)
 
-    </div>
-  );
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+      })
+  }, [])
+  console.log('render', notes.length, 'notes')
 }
 
-export default App;
+export default App
