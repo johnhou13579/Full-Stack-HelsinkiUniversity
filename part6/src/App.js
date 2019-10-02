@@ -1,11 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import Note from './components/Note'
 
-const App = () => {
-  const [notes, setNotes] = useState([])
-  const [newNote, setNewNote] = useState('')
-  const [showAll, setShowAll] = useState(true)
+
+const App=()=>{
+  const [person, setPerson] = useState([]);
 
   useEffect(() => {
     console.log('effect')
@@ -13,10 +11,17 @@ const App = () => {
       .get('http://localhost:3001/persons')
       .then(response => {
         console.log('promise fulfilled')
-        setNotes(response.data)
+        setPerson(response.data)
       })
   }, [])
-  console.log('render', notes.length, 'notes')
+
+  console.log('render', person.length,person)
+
+    return(
+      <div>
+
+      </div>
+    )
 }
 
 export default App
