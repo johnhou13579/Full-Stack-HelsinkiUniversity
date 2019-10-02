@@ -17,7 +17,7 @@ const Input=()=>{
 }
 
 const App=()=>{
-  const [person, setPerson] = useState([]);
+  const [person, setPerson] = useState([]); 
 
   useEffect(() => {
     console.log('effect')
