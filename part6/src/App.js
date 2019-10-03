@@ -24,9 +24,16 @@ const Result = ({ country, person }) => {
     var count = 0;
     (person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? count++ : null))
     if (count <= 10) {
-      return (
-        person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? <li key={p.name}>{p.name}</li> : <div key={p.name}></div>)
-      )
+      if(count===1){
+        return (
+          person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? <div key={p.name}><h1>{p.name}</h1> capital: {p.capital}  population: {p.population}</div>  : <div key={p.name}></div>)
+        )
+      }else{
+        return (
+          person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? <li key={p.name}>{p.name}</li> : <div key={p.name}></div>)
+        )
+      }
+      
     } else {
       return (
         <div>
