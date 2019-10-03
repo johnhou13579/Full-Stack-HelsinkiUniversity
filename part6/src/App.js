@@ -16,6 +16,13 @@ const Input = ({ country, setCountry }) => {
   )
 }
 
+const Languages = ({ person }) => {
+  return (
+    <div>
+      {person.map(p => <li key={p.name}> {p.name} </li>)}
+    </div>
+  )
+}
 
 const Result = ({ country, person }) => {
 
@@ -24,16 +31,25 @@ const Result = ({ country, person }) => {
     var count = 0;
     (person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? count++ : null))
     if (count <= 10) {
-      if(count===1){
+      if (count === 1) {
         return (
-          person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? <div key={p.name}><h1>{p.name}</h1> capital: {p.capital}  population: {p.population}</div>  : <div key={p.name}></div>)
+          person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ?
+            <div key={p.name}>
+              <h1>{p.name}</h1>
+              <div>capital: {p.capital} </div>
+              <div>population: {p.population} </div>
+              <h2> Languages </h2>
+              <div> <Languages person={p.languages} />  </div>
+              <div><img src={p.flag} height="60" /> </div>
+            </div>
+            : <div key={p.name}></div>)
         )
-      }else{
+      } else {
         return (
           person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? <li key={p.name}>{p.name}</li> : <div key={p.name}></div>)
         )
       }
-      
+
     } else {
       return (
         <div>
