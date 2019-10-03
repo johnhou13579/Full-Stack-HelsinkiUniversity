@@ -5,7 +5,6 @@ const Input = ({ country, setCountry }) => {
 
 
   const handleSetCountry = (event) => {
-    console.log(event.target.value)
     setCountry(event.target.value)
   }
 
@@ -27,7 +26,6 @@ const Languages = ({ person }) => {
 const Result = ({ country, person }) => {
 
   if (country !== "") {
-    console.log("Yes")
     var count = 0;
     (person.map(p => (p.name.toLowerCase()).includes(country.toLowerCase()) ? count++ : null))
     if (count <= 10) {
@@ -40,7 +38,7 @@ const Result = ({ country, person }) => {
               <div>population: {p.population} </div>
               <h2> Languages </h2>
               <div> <Languages person={p.languages} />  </div>
-              <div><img src={p.flag} height="60" /> </div>
+              <div><img src={p.flag} height="60" alt="" /> </div>
             </div>
             : <div key={p.name}></div>)
         )
@@ -72,16 +70,13 @@ const App = () => {
   const [country, setCountry] = useState('')
 
   useEffect(() => {
-    console.log('effect')
     axios
       .get('https://restcountries.eu/rest/v2/all')
       .then(response => {
-        console.log('promise fulfilled')
         setPerson(response.data)
       })
   }, [])
 
-  console.log('render', person.length, person)
 
   return (
     <div>
