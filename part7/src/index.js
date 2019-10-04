@@ -15,15 +15,12 @@ const App = () => {
     const [newNum, setNewNum] = useState('')
     const [newSearch, setNewSearch] = useState('')
     const handleNameChange = (event) => {
-        console.log(event.target.value)
         setNewName(event.target.value)
     }
     const handleNumChange = (event) => {
-        console.log(event.target.value)
         setNewNum(event.target.value)
     }
     const handleSearch = (event) => {
-        console.log(event.target.value)
         setNewSearch(event.target.value)
     }
     const addNote = (event) => {
@@ -53,10 +50,10 @@ const App = () => {
             <h3>Add a New</h3>
 
             <Form setNewName={setNewName} setNewNum={setNewNum} addNote={addNote} newName={newName} newNum={newNum} handleNameChange={handleNameChange} handleNumChange={handleNumChange} />
-            
+
             <h2>Numbers</h2>
 
-            
+
             <Filter persons={persons} newSearch={newSearch} />
         </div>
     )
