@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Filter from './components/filter'
 import Form from './components/form'
 import Search from './components/search'
+import axios from 'axios'
 
 const App = () => {
     const [persons, setPersons] = useState([
@@ -23,6 +24,7 @@ const App = () => {
     const handleSearch = (event) => {
         setNewSearch(event.target.value)
     }
+
     const addNote = (event) => {
         event.preventDefault()
         if (!(persons.map(p => p.name).includes(newName))) {
@@ -30,6 +32,8 @@ const App = () => {
                 name: newName,
                 number: newNum
             }
+
+
             setPersons(persons.concat(personObject))
         }
         else {
@@ -53,8 +57,9 @@ const App = () => {
 
             <h2>Numbers</h2>
 
-
             <Filter persons={persons} newSearch={newSearch} />
+
+
         </div>
     )
 }
