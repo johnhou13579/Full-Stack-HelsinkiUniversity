@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const App = () => {
 
-    
+
     const [persons, setPersons] = useState([])
     const [newName, setNewName] = useState('')
     const [newNum, setNewNum] = useState('')
@@ -38,7 +38,7 @@ const App = () => {
                     setNewNum('')
                 })
 
-            
+
         }
         else {
             alert(`${newName} is already added to phonebook`)
@@ -47,12 +47,14 @@ const App = () => {
         setNewSearch('')
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('http://localhost:3001/persons').then(
-        response=> {
-            setPersons(response.data)
-        })
-    },[])
+            response => {
+                setPersons(response.data)
+            })
+    }, [])
+
+  
 
     return (
 
@@ -67,7 +69,7 @@ const App = () => {
 
             <h2>Numbers</h2>
 
-            <Filter persons={persons} newSearch={newSearch} />
+            <Filter persons={persons} newSearch={newSearch}/>
 
 
         </div>

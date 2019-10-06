@@ -1,5 +1,13 @@
 import React from 'react'
 
+const singleShow=(props)=>{
+    console.log(props.target.value)
+    return(
+        <div>
+        </div>
+    )
+}
+
 const Filter = ({ persons, newSearch }) => {
     if (newSearch !== "") {
         return (
@@ -10,7 +18,7 @@ const Filter = ({ persons, newSearch }) => {
     } else {
         return (
             <div>
-                {persons.map(p => <li key={p.id}>{p.name} {p.number} <button key={p.name}>Label</button></li>)}
+                {persons.map(p => <li key={p.id}>{p.name} {p.number} <button onClick={singleShow} value={p.name} newsearch = {newSearch} persons={persons}>show</button></li>)}
             </div>
         )
     }
