@@ -8,10 +8,11 @@ import noteService from './services/notes'
 const App = () => {
 
 
-    const [persons, setPersons] = useState([])
+    const [persons, setPersons] = useState([{}])
     const [newName, setNewName] = useState('')
     const [newNum, setNewNum] = useState('')
     const [newSearch, setNewSearch] = useState('')
+    
     const handleNameChange = (event) => {
         setNewName(event.target.value)
     }
