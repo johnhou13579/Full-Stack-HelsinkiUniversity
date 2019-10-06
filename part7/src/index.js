@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Filter from './components/filter'
 import Form from './components/form'
 import Search from './components/search'
-import axios from 'axios'
+import noteService from './services/notes'
 
 const App = () => {
 
@@ -30,8 +30,7 @@ const App = () => {
                 number: newNum
             }
 
-            axios
-                .post('http://localhost:3001/persons', personObject)
+            noteService.create(personObject)
                 .then(response => {
                     setPersons(persons.concat(personObject))
                     setNewName('')
@@ -48,7 +47,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3001/persons').then(
+        noteService.getAll().then(
             response => {
                 setPersons(response.data)
             })
