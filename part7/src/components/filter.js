@@ -1,6 +1,12 @@
 import React from 'react'
 
-
+const Button=({deletePerson, p})=>{
+    return(
+        <div>
+            <button key={p.id} onClick={e=>deletePerson(p.id)}>delete</button>
+        </div>
+    )
+}
 
 const Filter = ({ persons, newSearch, deletePerson }) => {
     if (newSearch !== "") {
@@ -13,7 +19,7 @@ const Filter = ({ persons, newSearch, deletePerson }) => {
         
         return (
             <div>
-                {persons.map(p => <li className='note' key={p.id}>{p.name} {p.number} <button onClick={e=>deletePerson(p.id)}>delete</button></li>)}
+                {persons.map(p => <li className='note' key={p.id}> {p.name} {p.number} <Button deletePerson={deletePerson} p={p}/></li>)}
             </div>
         )
     }
