@@ -19,5 +19,27 @@ code {
 }
 
 button{
+  border-radius: 10px;
+  color: white;
+  background: darkgray;
+  border-color: transparent;
+}
 
+button:active{
+  background:gray;
+}
+
+button:focus{
+  outline: transparent;
+}
+
+input{
+  border-radius: 15px;
+  padding: 4px;
+  border-color: lightgrey;
+  border-width: 1px;
+}
+
+input:focus{
+  outline:transparent;
 }
