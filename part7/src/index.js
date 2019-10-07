@@ -40,12 +40,20 @@ const App = () => {
 
         }
         else {
+
+            const changedPerson = persons.find(n=>n.name===newName)
+            const personId = changedPerson.id
+            const updatePerson = {...changedPerson, number: `${newNum}`}
+
             if(window.confirm(`${newName} is already added to phonebook, replace the older number with a new one?`))
             {
-                
+                noteService.update(personId, updatePerson).then(response =>{
+                        setPersons(persons.map(p=>p.id !== personId ? p : response.data))
+                    })
             }
         }
         setNewName('')
+        setNewNum('')
         setNewSearch('')
     }
 
