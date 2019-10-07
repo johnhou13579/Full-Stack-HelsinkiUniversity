@@ -30,7 +30,6 @@ const App = () => {
                 name: newName,
                 number: newNum
             }
-
             noteService.create(personObject)
                 .then(response => {
                     setPersons(persons.concat(personObject))
@@ -54,18 +53,17 @@ const App = () => {
             })
     }, [])
 
-    const deletePerson=(id)=>{
-        console.log(id)
+    const deletePerson = (id) => {
         const result = window.confirm("Confirm?")
-        console.log(result)
-        if(result){
+        if (result) {
             noteService.remove(id).then(
-                response=>{
-                    console.log("removed")
+                response => {
+                    setPersons(persons.filter(p => p.id !== id))
                 }
             )
         }
     }
+
     return (
 
         <div>
@@ -79,7 +77,7 @@ const App = () => {
 
             <h2>Numbers</h2>
 
-            <Filter persons={persons} newSearch={newSearch} deletePerson={deletePerson}/>
+            <Filter persons={persons} newSearch={newSearch} deletePerson={deletePerson} />
 
 
         </div>
