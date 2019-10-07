@@ -12,7 +12,7 @@ const App = () => {
     const [newName, setNewName] = useState('')
     const [newNum, setNewNum] = useState('')
     const [newSearch, setNewSearch] = useState('')
-    
+
     const handleNameChange = (event) => {
         setNewName(event.target.value)
     }
@@ -54,8 +54,9 @@ const App = () => {
             })
     }, [])
 
-  
-
+    const deletePerson=(id)=>{
+        console.log(id)
+    }
     return (
 
         <div>
@@ -69,7 +70,7 @@ const App = () => {
 
             <h2>Numbers</h2>
 
-            <Filter persons={persons} newSearch={newSearch}/>
+            <Filter persons={persons} newSearch={newSearch} deletePerson={deletePerson}/>
 
 
         </div>

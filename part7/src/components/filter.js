@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-const Filter = ({ persons, newSearch }) => {
+
+const Filter = ({ persons, newSearch, deletePerson }) => {
     if (newSearch !== "") {
         console.log(persons)
         console.log(newSearch)
@@ -14,7 +15,7 @@ const Filter = ({ persons, newSearch }) => {
         
         return (
             <div>
-                {persons.map(p => <li key={p.id}>{p.name} {p.number} <button >delete</button></li>)}
+                {persons.map(p => <li key={p.id}>{p.name} {p.number} <button onClick={e=>deletePerson(p.id)}>delete</button></li>)}
             </div>
         )
     }
