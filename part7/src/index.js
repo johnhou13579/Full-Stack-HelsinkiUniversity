@@ -4,9 +4,10 @@ import Filter from './components/filter'
 import Form from './components/form'
 import Search from './components/search'
 import noteService from './services/notes'
+import './index.css'
 
 const App = () => {
-
+    
 
     const [persons, setPersons] = useState([{}])
     const [newName, setNewName] = useState('')

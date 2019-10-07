@@ -8,14 +8,14 @@ const Filter = ({ persons, newSearch, deletePerson }) => {
         console.log(newSearch)
         return (
             <div>
-                {persons.map(p => newSearch.name.toLowerCase() === p.name.toLowerCase() ? <li key={p.id}>{p.name} {p.number}</li> : <div key={p.name}>  </div>)}
+                {persons.map(p => newSearch.name.toLowerCase() === p.name.toLowerCase() ? <li className='note' key={p.id}>{p.name} {p.number}</li> : <div key={p.name}>  </div>)}
             </div>
         )
     } else {
         
         return (
             <div>
-                {persons.map(p => <li key={p.id}>{p.name} {p.number} <button onClick={e=>deletePerson(p.id)}>delete</button></li>)}
+                {persons.map(p => <li className='note' key={p.id}>{p.name} {p.number} <button onClick={e=>deletePerson(p.id)}>delete</button></li>)}
             </div>
         )
     }
