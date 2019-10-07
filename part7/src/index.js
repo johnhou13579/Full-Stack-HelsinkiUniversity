@@ -56,6 +56,15 @@ const App = () => {
 
     const deletePerson=(id)=>{
         console.log(id)
+        const result = window.confirm("Confirm?")
+        console.log(result)
+        if(result){
+            noteService.remove(id).then(
+                response=>{
+                    console.log("removed")
+                }
+            )
+        }
     }
     return (
 
