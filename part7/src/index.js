@@ -40,7 +40,10 @@ const App = () => {
 
         }
         else {
-            alert(`${newName} is already added to phonebook`)
+            if(window.confirm(`${newName} is already added to phonebook, replace the older number with a new one?`))
+            {
+                
+            }
         }
         setNewName('')
         setNewSearch('')
